@@ -26,12 +26,12 @@ const WinScreen = ({
         <div className="answer-reveal-container">
           <div className="answer">Shortest Solution: {solution.length}</div>
           <motion.div
-            whileHover={{ scale: 1.1, backgroundColor: "#494949" }}
-            whileTap={{ scale: 0.9, backgroundColor: "#999999" }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onMouseUp={() => {
               setShowSolution(!showSolution);
             }}
-            className="win-button button-border"
+            className={`win-button button-border ${showSolution ? "selected" : ""}`}
           >
             Show?
           </motion.div>
@@ -72,8 +72,8 @@ const WinScreen = ({
         {mode == "endless" && (
           <motion.div
             className="play-again"
-            whileHover={{ scale: 1.1, backgroundColor: "#494949" }}
-            whileTap={{ scale: 0.9, backgroundColor: "#999999" }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onMouseUp={() => {
               if (onRandom) {
                 var tempDiff =
