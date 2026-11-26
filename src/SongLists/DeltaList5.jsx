@@ -191,7 +191,7 @@ const DeltaList5 = [
   {
     id: 35,
     name: "That Day",
-    motifs: ["Asgore", "The Chase"],
+    motifs: ["Asgore", "The Door"],
     url: "https://www.youtube.com/watch?v=Kgxj0rE2pzU&list=PLKXdyINOQYsbqGQp08A83PtAWNBrY1FXP&index=35",
     game: "D34",
   },

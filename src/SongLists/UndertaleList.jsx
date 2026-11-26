@@ -9,7 +9,7 @@ const UndertaleList = [
   {
     id: 2,
     name: "Start Menu",
-    motifs: ["Once Upon A Time", "Hopes and Dreams"],
+    motifs: ["Once Upon A Time"],
     url: "https://www.youtube.com/watch?v=5BrJzFtOnwo&list=PLKXdyINOQYsb38jn5HGiF6w8X3rph4IIx&index=2",
     game: "U",
   },

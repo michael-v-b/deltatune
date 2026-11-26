@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const SongGuesser = ({
   onSubmit,
@@ -10,6 +11,16 @@ const SongGuesser = ({
   setNotSong,
   currentSong,
 }) => {
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key == "Enter") {
+        onSubmit();
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   return (
     <>
       {" "}
@@ -33,12 +44,7 @@ const SongGuesser = ({
           Submit
         </motion.div>
       </div>
-      {notSong && (
-        <div className="error-message">
-          * {songGuess} is not a song in Undertale or Deltarune
-        </div>
-      )}
-      {notNeighbor && (
+      {(notSong || notNeighbor) && (
         <div className="error-message">
           * {songGuess} does not share any motifs with {currentSong.name}
         </div>

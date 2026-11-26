@@ -37,14 +37,14 @@ const DeltaList1 = [
   {
     id: 5,
     name: "The Door",
-    motifs: ["The Chase"],
+    motifs: ["The Door"],
     url: "https://www.youtube.com/watch?v=KWi1-9eLO_o&list=PLKXdyINOQYsbroHtsNBW6OJaNZKLh8lf6&index=5",
     game: "D1",
   },
   {
     id: 7,
     name: "The Chase",
-    motifs: ["The Chase"],
+    motifs: ["The Door"],
     url: "https://www.youtube.com/watch?v=OX5iGh2pgxk&list=PLKXdyINOQYsbroHtsNBW6OJaNZKLh8lf6&index=7",
     game: "D1",
   },
@@ -198,7 +198,7 @@ const DeltaList1 = [
   {
     id: 33,
     name: "THE WORLD REVOLVING",
-    motifs: ["The Chase", "Freedom Motif", "Don't Forget"],
+    motifs: ["The Door", "Freedom Motif", "Don't Forget"],
     url: "https://www.youtube.com/watch?v=cfxTZ0aw6iY&list=PLKXdyINOQYsbroHtsNBW6OJaNZKLh8lf6&index=33",
     game: "D1",
   },

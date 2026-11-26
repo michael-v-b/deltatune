@@ -51,7 +51,7 @@ const DeltaList3 = [
   {
     id: 8,
     name: "Query",
-    motifs: ["Quiz", "Don't Forget"],
+    motifs: ["Don't Forget"],
     url: "https://www.youtube.com/watch?v=oEG_zTZC5wM&list=PLKXdyINOQYsaHwm4rJ0QDFzsaZQNQjF0U&index=8",
     game: "D34",
   },
@@ -170,7 +170,7 @@ const DeltaList3 = [
   {
     id: 30,
     name: "Black Knife",
-    motifs: ["Black Knife", "The Chase"],
+    motifs: ["Black Knife", "The Door"],
     url: "https://www.youtube.com/watch?v=B8Us0DZgexw&list=PLKXdyINOQYsaHwm4rJ0QDFzsaZQNQjF0U&index=30",
     game: "D34",
   },

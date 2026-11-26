@@ -142,7 +142,7 @@ const DeltaList2 = [
   {
     id: 22,
     name: "Spamton",
-    motifs: ["Spamton", "Roots"],
+    motifs: ["Spamton"],
     url: "https://www.youtube.com/watch?v=Nv7-Mud8OR8&list=PLKXdyINOQYsbMHB5JF-mqNQOb-8WD0iDq&index=22",
     game: "D2",
   },
@@ -291,6 +291,13 @@ const DeltaList2 = [
     name: "Before The Story",
     motifs: ["Don't Forget"],
     url: "https://www.youtube.com/watch?v=Zm_-c8DwLes&list=PLKXdyINOQYsbMHB5JF-mqNQOb-8WD0iDq&index=45",
+    game: "D2",
+  },
+  {
+    id: 47,
+    name: "Attack of the Killer Beast",
+    motifs: ["Queen", "Berdly"],
+    url: "https://www.youtube.com/watch?v=quXacw3z0dY",
     game: "D2",
   },
 ];
