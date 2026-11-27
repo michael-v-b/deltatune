@@ -302,6 +302,7 @@
     text-decoration:underline;
     text-align:left;
     margin-bottom:2vh;
+    margin-top:3vh;
 
 }
 .motif-desc{
@@ -309,6 +310,9 @@ text-align:left;
 font-size:3vh;
 margin-bottom:1vh;
 }
-.motif-clip{
-    margin-bottom:5vh;
+.motif-clips {
+    display:flex;
+    flex-direction:row;
+    margin-top:1vh;
+    margin-bottom:4vh;
 }

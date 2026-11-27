@@ -1,8 +1,8 @@
 const DeltaList3 = [
   {
     id: 1,
-    name: "Before The Story",
-    motifs: ["The Holy", "Lost Girl", "Flashback"],
+    name: "Flashback (Excerpt)",
+    motifs: ["Flashback", "The Holy"],
     url: "https://www.youtube.com/watch?v=tQ5WnrSNHIg&list=PLKXdyINOQYsaHwm4rJ0QDFzsaZQNQjF0U",
     game: "D34",
   },
@@ -284,13 +284,6 @@ const DeltaList3 = [
     name: "From Now On (Battle 2)",
     motifs: ["Dark Sanctuary", "Don't Forget"],
     url: "https://www.youtube.com/watch?v=OobVFldn6As&list=RDOobVFldn6As&start_radio=1",
-    game: "D34",
-  },
-  {
-    id: 51,
-    name: "Gyaa Ha ha!",
-    motifs: ["Spear of Justice", "Ruins", "Gerson"],
-    url: "https://www.youtube.com/watch?v=iqoYq4x0RQw&list=PLKXdyINOQYsaHwm4rJ0QDFzsaZQNQjF0U&index=51",
     game: "D34",
   },
   {
