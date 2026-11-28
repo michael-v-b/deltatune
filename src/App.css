@@ -39,12 +39,27 @@
     margin-top:10vh;
     height:65vh;
     width:50vh;
-    padding-top:5vh;
     border-style:solid;
     border-color:white;
     border-width:4px;
     font-size:3vh;
     z-index: 1;
+}
+.win-top {
+    height:10vh;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+    width:100%;
+}
+.win-x{
+    font-size:4vh;
+    margin-right:2vh;
+    border-style:solid;
+    border-width:4px;
+    padding:1vh;
+    user-select:none;
 }
 .win-text {
     font-size:6vh;
@@ -237,6 +252,7 @@
     align-items:center;
     padding:1vh;
     height:6vh;
+    cursor:pointer;
 }
 .title-option-seperator{
     display:flex;

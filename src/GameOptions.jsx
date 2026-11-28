@@ -8,6 +8,7 @@ const GameOptions = ({
   endlessMode,
   onRandom,
   setRandom,
+  setHideWin,
 }) => {
   const MAX_DIFFICULTY = 5;
   const MIN_DIFFICULTY = 2;
@@ -88,6 +89,7 @@ const GameOptions = ({
           whileTap={{ scale: 0.9 }}
           onMouseUp={() => {
             setEndScreen(true);
+            setHideWin(false);
           }}
           className="button-border game-options"
         >

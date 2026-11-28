@@ -25,6 +25,7 @@ function DailyGame() {
   const [endlessMode, setEndlessMode] = useState(false);
   const [wonDaily, setWonDaily] = useState(false);
   const [onRandom, setRandom] = useState(false);
+  const [hideWin, setHideWin] = useState(false);
 
   const SongManagerRef = useRef(null);
 
@@ -133,6 +134,7 @@ function DailyGame() {
           endlessMode={endlessMode}
           onRandom={onRandom}
           setRandom={setRandom}
+          setHideWin={setHideWin}
         />
 
         {(wonGame || endScreen) && (
@@ -144,6 +146,8 @@ function DailyGame() {
             mode="daily"
             onRandom={onRandom}
             setDifficulty={setDifficulty}
+            hideWin={hideWin}
+            setHideWin={setHideWin}
           />
         )}
 

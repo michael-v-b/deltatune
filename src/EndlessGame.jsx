@@ -25,6 +25,7 @@ function EndlessGame() {
   const [endlessMode, setEndlessMode] = useState(true);
   const [wonDaily, setWonDaily] = useState(false);
   const [onRandom, setRandom] = useState(false);
+  const [hideWin, setHideWin] = useState(false);
 
   const SongManagerRef = useRef(null);
 
@@ -132,6 +133,7 @@ function EndlessGame() {
           endlessMode={endlessMode}
           onRandom={onRandom}
           setRandom={setRandom}
+          setHideWin={setHideWin}
         />
 
         {(wonGame || endScreen) && (
@@ -143,6 +145,8 @@ function EndlessGame() {
             mode={"endless"}
             onRandom={onRandom}
             setDifficulty={setDifficulty}
+            hideWin={hideWin}
+            setHideWin={setHideWin}
           />
         )}
 
