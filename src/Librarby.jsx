@@ -69,6 +69,7 @@ import sweetCapnCakes from "./assets/clips/sweet-capn-cakes.mp3";
 import tvTime from "./assets/clips/tv-time.mp3";
 import spamton from "./assets/clips/spamton.mp3";
 import bigShot from "./assets/clips/big-shot.mp3";
+import digitalRoots from "./assets/clips/digital-roots.mp3";
 import aDarkTruth from "./assets/clips/a-dark-truth.mp3";
 import flashback from "./assets/clips/flashback.mp3";
 import tennaA from "./assets/clips/tenna/tenna-a.mp3";
@@ -82,399 +83,426 @@ import sunsetOfSevenSunsA from "./assets/clips/sunset-of-seven-suns/sunset-of-se
 import sunsetOfSevenSunsB from "./assets/clips/sunset-of-seven-suns/sunset-of-seven-suns-b.mp3";
 import violetTactics from "./assets/clips/violet-tactics.mp3";
 import pink from "./assets/clips/pink.mp3";
+import LibrarbySideBar from "./LibrarbySideBar.jsx";
+import { useRef, useEffect } from "react";
 const Librarby = () => {
-  var comingSoon = true;
+  const comingSoon = false;
+  const motifEntries = [
+    [
+      "Once Upon A Time",
+      "This motif is used all throughout Undertale and is attributed to be the theme of the game as a whole.",
+      'Clip used from "Once Upon A Time".',
+      [onceUponATimeA, onceUponATimeB, onceUponATimeC],
+    ],
+    [
+      "Flowey",
+      "This is Flowey's theme, and is used in songs that relate to him.",
+      'Clip used from "Your Best Friend".',
+      [flowey],
+    ],
+    [
+      "Toriel",
+      "This is Toriel's character theme, and it is surprisingly rare. It is used in songs that relate to her.",
+      'Clip used from "Fallen Down".',
+      [toriel],
+    ],
+    [
+      "Ruins",
+      "This also can be considered the theme for The Underground as a whole and it is not only used in the Ruins.",
+      'Clip used from "Ruins".',
+      [ruins],
+    ],
+    [
+      "Anticipation",
+      "This is the song is the pretheme to Undertale's battle theme. Its simple melody links it to a few songs throughout both games.",
+      'Clip used from "Anticipation".',
+      [anticipation],
+    ],
+    [
+      "Enemy Approaching",
+      "This is the battle theme in Undertale. Its melody is referenced a few times during the battle themes for Undertale.",
+      'Clip used from "Enemy Approaching".',
+      [enemyApproaching],
+    ],
+    [
+      "Ghost Fight",
+      "This theme is used whenever something spOOooOoOoky is going on. It is the quintessential ghost theme.",
+      'Clip used from "Ghost Fight".',
+      [ghostFight],
+    ],
+    [
+      "Determination",
+      "This is Undertale's death theme. It plays whenever the player needs to be motivated.",
+      'Clip used from "Determination".',
+      [determinationA, determinationB],
+    ],
+    [
+      "Heartache",
+      "This is Toriel's battle theme. It only ever gets played twice in both games.",
+      'Clip used from "Heartache".',
+      [heartacheA, heartacheB],
+    ],
+    [
+      "Sans",
+      "This is Sans's theme. It plays in scenes where sans is involved.",
+      'Clip used from "sans.".',
+      [sans],
+    ],
+    [
+      "Papyrus",
+      "This is Papyrus's theme. It plays in scenes where sans is involved.",
+      'Clip used from "Nyeh Heh Heh".',
+      [papyrusA, papyrusB],
+    ],
+    [
+      "Snowdin",
+      "This theme also has been interpreted as the Monster's theme, as it plays whenever referring to all the monsters of The Underground in Undertale.",
+      'Clip used from "Shop".',
+      [snowdin],
+    ],
+    [
+      "Hopes and Dreams",
+      "This theme is the quint essential `friendship` theme in Undertale, played amnytimes throughout the pacifist run.",
+      'Clip used from "Shop".',
+      [hopesAndDreams],
+    ],
+    [
+      "Spear of Justice",
+      "This is Undyne's battle theme, and is typically used during tense and bombastic moments.",
+      'Clip used from "Spear of Justice".',
+      [spearOfJustice],
+    ],
+    [
+      "Another Medium",
+      "This is the theme of Hot Land. It is used in Hot Land and its adjacent locations.",
+      'Clip used from "Waterfall".',
+      [anotherMediumA, anotherMediumB],
+    ],
+    [
+      "Asriel",
+      "This is the theme for Asriel. It is often used during Undertale's sentimental and emotional moments.",
+      'Clip used from "Memory".',
+      [asriel],
+    ],
+    [
+      "Dummy!",
+      "This is the theme used by the Mad Dummy boss fight. While most of the fight uses the Ghost Fight theme, the ending is unique.",
+      'Clip used from "Dummy!".',
+      [dummy],
+    ],
+    [
+      "Jingle Bells",
+      "This song is used occasionally mostly as a joke, but it is used twice in the Deltarune and Undertale OST.",
+      'Clip used from "Holiday Studio".',
+      [jingleBells],
+    ],
+    [
+      "It's Showtime!",
+      "This is Mettaton's show theme. It is used whenever Mettaton is performing or broadcasting to his audience.",
+      'Clip used from "It\'s Showtime!".',
+      [itsShowtime],
+    ],
+    [
+      "Metal Crusher",
+      "This is the theme for Mettaton's more robotic side. It is primarily used during his bossfight.",
+      'Clip used from "Metal Crusher".',
+      [metalCrusherA, metalCrusherB],
+    ],
+    [
+      "Hotel",
+      "This is the musical pattern used in the beginning of Hotel. It is primarily used in the hotel area and its adjacent areas.",
+      'Clip used from "Hotel".',
+      [hotel],
+    ],
+    [
+      "CORE",
+      "This theme refers to the first part of the CORE song. The actual melody of core is a version of Another Medium, but the opening chords are original.",
+      'Clip used from "CORE".',
+      [core],
+    ],
+    [
+      "ASGORE",
+      "This is Asgore's character theme. It is used in scenes that directly relate to him.",
+      'Clip used from "ASGORE".',
+      [asgore],
+    ],
+    [
+      "Your Best Nightmare",
+      "This is Omega Flowey's theme. It is often used during unsettling moments of dread.",
+      'Clip used from "Premonition".',
+      [yourBestNightmare],
+    ],
+    [
+      "Black Knife",
+      "This is the drum beat that is used in high stake, intense narrative battles.",
+      'Clip used from "Black Knife".',
+      [blackKnife],
+    ],
+    [
+      "Power of NEO",
+      "This theme is used to show the empowered NEO bosses.",
+      'Clip used from "Battle Against A True Hero".',
+      [powerOfNeo],
+    ],
+    [
+      "Gaster",
+      "This is the theme for the mysterious W.D. Gaster. While, it technically first appears in Undertale in a secret music menu, it first officially appears in Deltarune.",
+      'Clip used from "Gaster\'s Theme".',
+      [gaster],
+    ],
+    [
+      "Don't Forget",
+      "This theme is often considered the theme of Deltarune as a whole. It is by far the most widely used theme, being present in 36 songs.",
+      'Clip used from "Don\'t Forget".',
+      [dontForget],
+    ],
+    [
+      "Hometown",
+      "This is the theme for the light world area, Hometown in Deltarune.",
+      'Clip used from "School".',
+      [hometown],
+    ],
+    [
+      "Susie",
+      "This is Susie's theme. It is often used in scenes that relate to her",
+      'Clip used from "VS. Susie".',
+      [susie],
+    ],
+    [
+      "The Door",
+      "This theme is sometimes considered the theme for the dark.",
+      'Clip used from "The Door".',
+      [theDoor],
+    ],
+    [
+      "The Legend",
+      "This is the theme for Deltarune's prophecy. It is used in scenes that relate to it.",
+      'Clip used from "The Legend".',
+      [theLegendA, theLegendB, theLegendC],
+    ],
+    [
+      "Lancer",
+      "This is Lancer's theme. It is often used for fun, silly scenes or gags in Deltarune",
+      'Clip used from "Lancer".',
+      [lancerA, lancerB],
+    ],
+    [
+      "Rude Buster",
+      "This is Deltarune's battle theme. As of chapter 5 every chapter uses at least a variation of this theme.",
+      'Clip used from "Rude Buster".',
+      [rudeBusterA, rudeBusterB],
+    ],
+    [
+      "Field of Hopes and Dreams",
+      "This is the theme for the Field of Hopes and Dreams. It is used when relating to that area.",
+      'Clip used from "Field of Hopes and Dreams".',
+      [fieldOfHopesAndDreams],
+    ],
+    [
+      "Checker Dance",
+      "This theme is used for Checker King Boss fight. It is often used for gimmick fights in Deltarune.",
+      'Clip used from "Checker Dance".',
+      [checkerDance],
+    ],
+    [
+      "Scarlet Forest",
+      "This is the theme for the Scarlet Forest area. It is primarily used in Scarlet Forest and its subregions.",
+      'Clip used from "Scarlet Forest".',
+      [scarletForest],
+    ],
+    [
+      "Card Castle",
+      "This is the Card Castle Theme. It is primarily used in Card Castle and its subregions.",
+      'Clip used from "Card Castle".',
+      [cardCastle],
+    ],
+    [
+      "Rouxls Kaard",
+      "This is Rouxls Karrd's character theme. It is used during his dialogue and bossfights.",
+      'Clip used from "Rouxls Kaard".',
+      [rouxlsKaard],
+    ],
+    [
+      "Hip Shop",
+      "This is the them for Rouxls Kaard's shop. It is used in some other relaxing/safe areas.",
+      'Clip used from "Hip Shop".',
+      [hipShop],
+    ],
+    [
+      "Darkness Falls",
+      "This is the death theme for Deltarune, similar to Determination from Undertale. It happens whenever your party all dies.",
+      'Clip used from "Darkness Falls".',
+      [darknessFalls],
+    ],
+    [
+      "Freedom Motif",
+      "This is the theme associated with the secret bosses. It can be found in their boss themes in different areas associated with them.",
+      'Clip used from "THE WORLD REVOLVING".',
+      [freedomMotifA, freedomMotifB],
+    ],
+    [
+      "The Holy",
+      "This theme is used in significant areas that relate to the prophecy, such as dark fountains.",
+      'Clip used from "The Holy".',
+      [theHolyA, theHolyB],
+    ],
+    [
+      "Girl Next Door",
+      "This is Noelle's character theme. It plays in songs that relate to her or the holiday family.",
+      'Clip used from "Girl Next Door".',
+      [girlNextDoor],
+    ],
+    [
+      "Lost Girl",
+      "Lost Girl is a functionally considered Dess's theme. It is also sometimes used an tone setting song for emotional moments.",
+      'Clip used from "Girl Next Door".',
+      [lostGirlA, lostGirlB],
+    ],
+    [
+      "Berdly",
+      "This is Berdly's theme. It plays in many songs that relate to him.",
+      'Clip used from "Berdly".',
+      [berdlyA, berdlyB],
+    ],
+    [
+      "Queen",
+      "This is Queen's theme. It is used in songs that directly relate to her.",
+      'Clip used from "Queen".',
+      [queenA, queenB],
+    ],
+    [
+      "Cyber World",
+      "This is the main melody of the Cyber World. It plays in various locations in the Cyber World.",
+      'Clip used from "A CYBER WORLD?".',
+      [cyberWorldA, cyberWorldB],
+    ],
+    [
+      "Sweet Cap'n Cakes",
+      "This is the character theme for Sweet Cap'n Cakes, it plays whenever they are on screen.",
+      'Clip used from "Studio".',
+      [sweetCapnCakes],
+    ],
+    [
+      "It's TV Time!",
+      "This is part of both Spamton's and Tenna's introduction. It is associated with both Spamton and Tenna",
+      'Clip used from "Feature Presentation".',
+      [tvTime],
+    ],
+    [
+      "Spamton",
+      "This is Spamton's theme. It plays during his boss fights.",
+      'Clip used from "Spamton".',
+      [spamton],
+    ],
+    [
+      "Roots",
+      "This theme plays during the various ROOTS areas of the game. It is often used to set a dark tone for particularly forboding areas.",
+      'Clip used from "Digital Roots".',
+      [digitalRoots],
+    ],
+    [
+      "BIG SHOT",
+      "This theme plays during Spamton's secret battle in his NEO form. It is also used in other fights associated with Spamton",
+      'Clip used from "BIG SHOT".',
+      [bigShot],
+    ],
+    [
+      "The Dark Truth",
+      "This theme is associated with the secrets from the prophecy. It plays when Ralsei tells us part of the prophecy that he was hiding.",
+      'Clip used from "The Dark Truth".',
+      [aDarkTruth],
+    ],
+    [
+      "Flashback",
+      "This theme is played when during exposition scenes and flashbacks.",
+      'Clip used from "Flashback (Excerpt)".',
+      [flashback],
+    ],
+    [
+      "Tenna",
+      "This is Tenna's theme. It is used in scenes and locations related to him.",
+      'Clip used from "Mike The BOARD, please!".',
+      [tennaA, tennaB],
+    ],
+    [
+      "Dark Sanctuary",
+      "This is the theme for the Dark Sanctuary area. It plays in that area and its subregions.",
+      'Clip used from "Dark Sanctuary".',
+      [darkSanctuary],
+    ],
+    [
+      "Gerson",
+      "This is Gerson's theme. It plays during scenes that relate to him.",
+      'Clip used from "Gyaa Hah Hah".',
+      [gerson],
+    ],
+    [
+      "SPAWN",
+      "This is the Titan's theme. It plays during the encounter with the Titan.",
+      'Clip used from "Crumbling Tower".',
+      [spawn],
+    ],
+    [
+      "Catswing",
+      "This refers to the bassline used in Catswing. It's mostly used in scenes that relate to the Mikes.",
+      'Clip used from "Volume Adjustment".',
+      [catswing],
+    ],
+    [
+      "Flowery",
+      "This Flowery's character theme. It plays during scenes and locations that relate to him.",
+      'Clip used from "Your Dad\'s Best Friend".',
+      [flowery],
+    ],
+    [
+      "Sunset of Seven Suns",
+      "This is the theme for the seven flowers. It plays in their location and for each of their individual themes.",
+      'Clip used from "Who might you be?".',
+      [sunsetOfSevenSunsA, sunsetOfSevenSunsB],
+    ],
+    [
+      "Violet Tactics",
+      "This is Seth's battle theme. It also can be heard in some dramatic areas in the chapter 5 dark world.",
+      'Clip used from "Violet Tactics".',
+      [violetTactics],
+    ],
+    [
+      "Pink",
+      "This is Pink's theme. It plays during her boss fight and in scenes related to her.",
+      'Clip used from "Pink".',
+      [pink],
+    ],
+  ];
+
+  const profileRefs = useRef([]);
+
   return (
     <>
       <TitleBar />
       {comingSoon && <div className="coming-soon">Coming Soon</div>}
       {!comingSoon && (
-        <>
-          <MotifProf
-            name="Once Upon A Time"
-            desc="This motif is used all throughout Undertale and is attributed to be
-            the theme of the game as a whole."
-            first={`Clip used from "Once Upon A Time".`}
-            clips={[onceUponATimeA, onceUponATimeB, onceUponATimeC]}
-          />{" "}
-          <MotifProf
-            name="Flowey"
-            desc="This is Flowey's theme, and is used in songs that relate to him."
-            first={`Clip used from "Your Best Friend".`}
-            clips={[flowey]}
+        <div className="librarby-page-container">
+          <LibrarbySideBar
+            profileRefs={profileRefs}
+            motifEntries={motifEntries}
           />
-          <MotifProf
-            name="Toriel"
-            desc="This is Toriel's character theme, and it is surprisingly rare. It is used in songs that relate to her."
-            first={`Clip used from "Fallen Down".`}
-            clips={[toriel]}
-          />
-          <MotifProf
-            name="Ruins"
-            desc="This also can be considered the theme for The Underground as a whole and it is not only used in the Ruins."
-            first={`Clip used from "Ruins".`}
-            clips={[ruins]}
-          />
-          <MotifProf
-            name="Anticipation"
-            desc="This is the song is the pretheme to Undertale's battle theme. Its simple melody links it to a few songs throughout both games."
-            first={`Clip used from "Anticipation".`}
-            clips={[anticipation]}
-          />
-          <MotifProf
-            name="Enemy Approaching"
-            desc="This is the battle theme in Undertale. Its melody is referenced a few times during the battle themes for Undertale."
-            first={`Clip used from "Enemy Approaching".`}
-            clips={[enemyApproaching]}
-          />
-          <MotifProf
-            name="Ghost Fight"
-            desc="This theme is used whenever something spOOooOoOoky is going on. It is the quintessential ghost theme."
-            first={`Clip used from "Ghost Fight".`}
-            clips={[ghostFight]}
-          />
-          <MotifProf
-            name="Determination"
-            desc="This is Undertale's death theme. It plays whenever the player needs to be motivated."
-            first={`Clip used from "Determination".`}
-            clips={[determinationA, determinationB]}
-          />
-          <MotifProf
-            name="Heartache"
-            desc="This is Toriel's battle theme. It only ever gets played twice in both games."
-            first={`Clip used from "Heartache".`}
-            clips={[heartacheA, heartacheB]}
-          />
-          <MotifProf
-            name="Sans"
-            desc="This is Sans's theme. It plays in scenes where sans is involved."
-            first={`Clip used from "sans.".`}
-            clips={[sans]}
-          />
-          <MotifProf
-            name="Papyrus"
-            desc="This is Papyrus's theme. It plays in scenes where sans is involved."
-            first={`Clip used from "Nyeh Heh Heh".`}
-            clips={[papyrusA, papyrusB]}
-          />
-          <MotifProf
-            name="Snowdin"
-            desc="This theme also has been interpreted as the Monster's theme, as it plays whenever referring to all the monsters of The Underground in Undertale. "
-            first={`Clip used from "Shop".`}
-            clips={[snowdin]}
-          />
-          <MotifProf
-            name="Hopes and Dreams"
-            desc="This theme is the quint essential `friendship` theme in Undertale, played amnytimes throughout the pacifist run."
-            first={`Clip used from "Shop".`}
-            clips={[hopesAndDreams]}
-          />
-          <MotifProf
-            name="Spear of Justice"
-            desc="This is Undyne's battle theme, and is typically used during tense and bombastic moments."
-            first={`Clip used from "Spear of Justice".`}
-            clips={[spearOfJustice]}
-          />
-          <MotifProf
-            name="Another Medium"
-            desc="This is the theme of Hot Land. It is used in Hot Land and its adjacent locations."
-            first={`Clip used from "Waterfall".`}
-            clips={[anotherMediumA, anotherMediumB]}
-          />
-          <MotifProf
-            name="Asriel"
-            desc="This is the theme for Asriel. It is often used during Undertale's sentimental and emotional moments."
-            first={`Clip used from "Memory".`}
-            clips={[asriel]}
-          />
-          <MotifProf
-            name="Dummy!"
-            desc="This is the theme used by the Mad Dummy boss fight. While most of the fight uses the Ghost Fight theme, the ending is unique."
-            first={`Clip used from "Dummy!".`}
-            clips={[dummy]}
-          />
-          <MotifProf
-            name="Jingle Bells"
-            desc="This song is used occasionally mostly as a joke, but it is used twice in the Deltarune and Undertale OST."
-            first={`Clip used from "Holiday Studio".`}
-            clips={[jingleBells]}
-          />
-          <MotifProf
-            name="It's Showtime!"
-            desc="This is Mettaton's show theme. It is used whenever Mettaton is performing or broadcasting to his audience."
-            first={`Clip used from "It's Showtime!".`}
-            clips={[itsShowtime]}
-          />
-          <MotifProf
-            name="Metal Crusher"
-            desc="This is the theme for Mettaton's more robotic side. It is primarily used during his bossfight."
-            first={`Clip used from "Metal Crusher".`}
-            clips={[metalCrusherA, metalCrusherB]}
-          />
-          <MotifProf
-            name="Hotel"
-            desc="This is the musical pattern used in the beginning of Hotel. It is primarily used in the hotel area and its adjacent areas."
-            first={`Clip used from "Hotel".`}
-            clips={[hotel]}
-          />
-          <MotifProf
-            name="CORE"
-            desc="This theme refers to the first part of the CORE song. The actual melody of core is a version of Another Medium, but the opening chords are original."
-            first={`Clip used from "CORE".`}
-            clips={[core]}
-          />
-          <MotifProf
-            name="ASGORE"
-            desc="This is Asgore's character theme. It is used in scenes that directly relate to him."
-            first={`Clip used from "ASGORE".`}
-            clips={[asgore]}
-          />
-          <MotifProf
-            name="Your Best Nightmare"
-            desc="This is Omega Flowey's theme. It is often used during unsettling moments of dread."
-            first={`Clip used from "Premonition".`}
-            clips={[yourBestNightmare]}
-          />
-          <MotifProf
-            name="Black Knife"
-            desc="This is the drum beat that is used in high stake, intense narrative battles."
-            first={`Clip used from "Black Knife".`}
-            clips={[blackKnife]}
-          />
-          <MotifProf
-            name="Power of NEO"
-            desc="This theme is used to show the empowered NEO bosses."
-            first={`Clip used from "Battle Against A True Hero".`}
-            clips={[powerOfNeo]}
-          />
-          <MotifProf
-            name="Gaster"
-            desc="This is the theme for the mysterious W.D. Gaster. While, it technically first appears in Undertale in a secret music menu, it first officially appears in Deltarune."
-            first={`Clip used from "Gaster's Theme".`}
-            clips={[gaster]}
-          />
-          <MotifProf
-            name="Don't Forget"
-            desc="This theme is often considered the theme of Deltarune as a whole. It is by far the most widely used theme, being present in 36 songs."
-            first={`Clip used from "Don't Forget".`}
-            clips={[dontForget]}
-          />
-          <MotifProf
-            name="Hometown"
-            desc="This is the theme for the light world area, Hometown in Deltarune."
-            first={`Clip used from "School".`}
-            clips={[hometown]}
-          />
-          <MotifProf
-            name="Susie"
-            desc="This is Susie's theme. It is often used in scenes that relate to her"
-            first={`Clip used from "VS. Susie".`}
-            clips={[susie]}
-          />
-          <MotifProf
-            name="The Door"
-            desc="This theme is sometimes considered the theme for the dark. "
-            first={`Clip used from "The Door".`}
-            clips={[theDoor]}
-          />
-          <MotifProf
-            name="The Legend"
-            desc="This is the theme for Deltarune's prophecy. It is used in scenes that relate to it."
-            first={`Clip used from "The Legend".`}
-            clips={[theLegendA, theLegendB, theLegendC]}
-          />
-          <MotifProf
-            name="Lancer"
-            desc="This is Lancer's theme. It is often used for fun, silly scenes or gags in Deltarune"
-            first={`Clip used from "Lancer".`}
-            clips={[lancerA, lancerB]}
-          />
-          <MotifProf
-            name="Rude Buster"
-            desc="This is Deltarune's battle theme. As of chapter 5 every chapter uses at least a variation of this theme."
-            first={`Clip used from "Rude Buster".`}
-            clips={[rudeBusterA, rudeBusterB]}
-          />
-          <MotifProf
-            name="Field of Hopes and Dreams"
-            desc="This is the theme for the Field of Hopes and Dreams. It is used when relating to that area."
-            first={`Clip used from "Field of Hopes and Dreams".`}
-            clips={[fieldOfHopesAndDreams]}
-          />
-          <MotifProf
-            name="Checker Dance"
-            desc="This theme is used for Checker King Boss fight. It is often used for gimmick fights in Deltarune."
-            first={`Clip used from "Checker Dance".`}
-            clips={[checkerDance]}
-          />
-          <MotifProf
-            name="Scarlet Forest"
-            desc="This is the theme for the Scarlet Forest area. It is primarily used in Scarlet Forest and its subregions."
-            first={`Clip used from "Scarlet Forest".`}
-            clips={[scarletForest]}
-          />
-          <MotifProf
-            name="Card Castle"
-            desc="This is the Card Castle Theme. It is primarily used in Card Castle and its subregions."
-            first={`Clip used from "Card Castle".`}
-            clips={[cardCastle]}
-          />
-          <MotifProf
-            name="Rouxls Kaard"
-            desc="This is Rouxls Karrd's character theme. It is used during his dialogue and bossfights."
-            first={`Clip used from "Rouxls Kaard".`}
-            clips={[rouxlsKaard]}
-          />
-          <MotifProf
-            name="Hip Shop"
-            desc="This is the them for Rouxls Kaard's shop. It is used in some other relaxing/safe areas."
-            first={`Clip used from "Hip Shop".`}
-            clips={[hipShop]}
-          />
-          <MotifProf
-            name="Darkness Falls"
-            desc="This is the death theme for Deltarune, similar to Determination from Undertale. It happens whenever your party all dies."
-            first={`Clip used from "Darkness Falls".`}
-            clips={[darknessFalls]}
-          />
-          <MotifProf
-            name="Freedom Motif"
-            desc="This is the theme associated with the secret bosses. It can be found in their boss themes in different areas associated with them."
-            first={`Clip used from "THE WORLD REVOLVING".`}
-            clips={[freedomMotifA, freedomMotifB]}
-          />
-          <MotifProf
-            name="The Holy"
-            desc="This theme is used in significant areas that relate to the prophecy, such as dark fountains."
-            first={`Clip used from "The Holy".`}
-            clips={[theHolyA, theHolyB]}
-          />
-          <MotifProf
-            name="Girl Next Door"
-            desc="This is Noelle's character theme. It plays in songs that relate to her or the holiday family."
-            first={`Clip used from "Girl Next Door".`}
-            clips={[girlNextDoor]}
-          />
-          <MotifProf
-            name="Lost Girl"
-            desc="Lost Girl is a functionally considered Dess's theme. It is also sometimes used an tone setting song for emotional moments."
-            first={`Clip used from "Girl Next Door".`}
-            clips={[lostGirlA, lostGirlB]}
-          />
-          <MotifProf
-            name="Berdly"
-            desc="This is Berdly's theme. It plays in many songs that relate to him."
-            first={`Clip used from "Berdly".`}
-            clips={[berdlyA, berdlyB]}
-          />
-          <MotifProf
-            name="Queen"
-            desc="This is Queen's theme. It is used in songs that directly relate to her."
-            first={`Clip used from "Queen".`}
-            clips={[queenA, queenB]}
-          />
-          <MotifProf
-            name="Cyber World"
-            desc="This is the main melody of the Cyber World. It plays in various locations in the Cyber World."
-            first={`Clip used from "A CYBER WORLD?".`}
-            clips={[cyberWorldA, cyberWorldB]}
-          />
-          <MotifProf
-            name="Sweet Cap'n Cakes"
-            desc="This is the character theme for Sweet Cap'n Cakes, it plays whenever they are on screen."
-            first={`Clip used from "Studio".`}
-            clips={[sweetCapnCakes]}
-          />
-          <MotifProf
-            name="It's TV Time!"
-            desc="This is part of both Spamton's and Tenna's introduction. It is associated with both Spamton and Tenna"
-            first={`Clip used from "Feature Presentation".`}
-            clips={[tvTime]}
-          />
-          <MotifProf
-            name="Spamton"
-            desc="This is Spamton's theme. It plays during his boss fights."
-            first={`Clip used from "Spamton".`}
-            clips={[spamton]}
-          />
-          <MotifProf
-            name="Roots"
-            desc="This theme plays during the various ROOTS areas of the game. It is often used to set a dark tone for particularly forboding areas."
-            first={`Clip used from "Digital Roots".`}
-          />
-          <MotifProf
-            name="BIG SHOT"
-            desc="This theme plays during Spamton's secret battle in his NEO form. It is also used in other fights associated with Spamton"
-            first={`Clip used from "BIG SHOT".`}
-            clips={[bigShot]}
-          />
-          <MotifProf
-            name="The Dark Truth"
-            desc="This theme is associated with the secrets from the prophecy. It plays when Ralsei tells us part of the prophecy that he was hiding."
-            first={`Clip used from "The Dark Truth".`}
-            clips={[aDarkTruth]}
-          />
-          <MotifProf
-            name="Flashback"
-            desc="This theme is played when during exposition scenes and flashbacks."
-            first={`Clip used from "Flashback (Excerpt)".`}
-            clips={[flashback]}
-          />
-          <MotifProf
-            name="Tenna"
-            desc="This is Tenna's theme. It is used in scenes and locations related to him."
-            first={`Clip used from "Mike The BOARD, please!".`}
-            clips={[tennaA, tennaB]}
-          />
-          <MotifProf
-            name="Dark Sanctuary"
-            desc="This is the theme for the Dark Sanctuary area. It plays in that area and its subregions."
-            first={`Clip used from "Dark Sanctuary".`}
-            clips={[darkSanctuary]}
-          />
-          <MotifProf
-            name="Gerson"
-            desc="This is Gerson's theme. It plays during scenes that relate to him."
-            first={`Clip used from "Gyaa Hah Hah".`}
-            clips={[gerson]}
-          />
-          <MotifProf
-            name="SPAWN"
-            desc="This is the Titan's theme. It plays during the encounter with the Titan."
-            first={`Clip used from "Crumbling Tower".`}
-            clips={[spawn]}
-          />
-          <MotifProf
-            name="Catswing"
-            desc="This refers to the bassline used in Catswing. It's mostly used in scenes that relate to the Mikes."
-            first={`Clip used from "Volume Adjustment".`}
-            clips={[catswing]}
-          />
-          <MotifProf
-            name="Flowery"
-            desc="This Flowery's character theme. It plays during scenes and locations that relate to him."
-            first={`Clip used from "Your Dad's Best Friend".`}
-            clips={[flowery]}
-          />
-          <MotifProf
-            name="Sunset of Seven Suns"
-            desc="This is the theme for the seven flowers. It plays in their location and for each of their individual themes."
-            first={`Clip used from "Who might you be?".`}
-            clips={[sunsetOfSevenSunsA, sunsetOfSevenSunsB]}
-          />
-          <MotifProf
-            name="Violet Tactics"
-            desc="This is Seth's battle theme. It also can be heard in some dramatic areas in the chapter 5 dark world."
-            first={`Clip used from "Violet Tactics".`}
-            clips={[violetTactics]}
-          />
-          <MotifProf
-            name="Pink"
-            desc="This is Pink's theme. It plays during her boss fight and in scenes related to her."
-            first={`Clip used from "Pink".`}
-            clips={[pink]}
-          />
-        </>
+          <div className="motif-list">
+            {motifEntries.map(([name, desc, first, clips], index) => {
+              return (
+                <MotifProf
+                  sectionRef={(node) => {
+                    profileRefs.current[index] = node;
+                  }}
+                  key={name}
+                  name={name}
+                  desc={desc}
+                  first={first}
+                  clips={clips}
+                />
+              );
+            })}
+          </div>
+        </div>
       )}
     </>
   );
