@@ -229,7 +229,7 @@ const Librarby = () => {
     [
       "Your Best Nightmare",
       "This is Omega Flowey's theme. It is often used during unsettling moments of dread.",
-      'Clip used from "Premonition".',
+      'Clip used from "Your Best Nightmare".',
       [yourBestNightmare],
     ],
     [
